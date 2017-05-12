@@ -19,11 +19,17 @@
 console.log('============it gets in here=====================');
     var socket = io();
     console.log(`===================this is socket from index ejs line 20===================${socket}`);
+var count = 0;
     socket.on('chat message', (msg) => {
-      console.log(`===========this is msg in index.ejs line 22 =====================message=${msg.message}=====by user===${msg.username}` )
-      var li = `<li><strong>${msg.username} </strong>${msg.message}</li>`
-        $('.chat-box').append(li);
-        $('.chat-box').animate({scrollTop: $('.chat-box').prop('scrollHeight')}, 500);
+count++
+console.log(`================${count }=================`);
+if (count >= 2) {
+  console.log(`===========this is msg in index.ejs line 22 =====================message=${msg.message}=====by user===${msg.username}` )
+  var li = `<li><strong>${msg.username} </strong>${msg.message}</li>`
+    $('.chat-box').append(li);
+    $('.chat-box').animate({scrollTop: $('.chat-box').prop('scrollHeight')}, 500);
+return count = 0;
+}
 
     });
     $(document).ready(function() {
